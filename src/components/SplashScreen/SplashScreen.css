@@ -1,0 +1,68 @@
+.splashContainer {
+  position: fixed;
+  inset: 0;
+  background-color: #FFFCEB;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  items-center: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.logoWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.pulseRing {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #1E3322;
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.spinner {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border-top: 2px solid #1E3322;
+  border-bottom: 2px solid #1E3322;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  animation: spin 1s linear infinite;
+}
+
+.brandName {
+  font-family: serif;
+  font-size: 2rem;
+  color: #1E3322;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  color: rgba(30, 51, 34, 0.6);
+  margin-top: 8px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}

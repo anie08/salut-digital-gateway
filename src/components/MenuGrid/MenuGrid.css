@@ -1,0 +1,129 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 0 16px;
+  margin-top: 8px;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.imgWrapper {
+  position: relative;
+  height: 144px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.card:hover .image {
+  transform: scale(1.1);
+}
+
+.gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.15), transparent);
+}
+
+.info {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.title {
+  font-family: serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #1E3322;
+  height: 40px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.price {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.addBtn {
+  background-color: #1E3322;
+  color: #FFFCEB;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(30, 51, 34, 0.1);
+  transition: background-color 0.2s;
+}
+
+.addBtn:hover {
+  background-color: #2d4b33;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  background-color: #1E3322;
+  color: #FFFCEB;
+  border-radius: 9999px;
+  overflow: hidden;
+  font-size: 0.75rem;
+}
+
+.countBtn {
+  background: none;
+  border: none;
+  color: #FFFCEB;
+  padding: 4px 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.countBtn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.qty {
+  padding: 0 4px;
+  font-weight: 600;
+}

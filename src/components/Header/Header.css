@@ -1,0 +1,58 @@
+.header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(30, 51, 34, 0.1);
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 252, 235, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 30;
+}
+
+.title {
+  font-family: serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #1E3322;
+}
+
+.subtitle {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(30, 51, 34, 0.6);
+  margin-top: -4px;
+}
+
+.langSelector {
+  display: flex;
+  gap: 4px;
+  background-color: rgba(30, 51, 34, 0.05);
+  padding: 4px;
+  border-radius: 9999px;
+  border: 1px solid rgba(30, 51, 34, 0.1);
+}
+
+.langBtn {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  color: rgba(30, 51, 34, 0.7);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.activeLang {
+  background-color: #1E3322;
+  color: #FFFCEB;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,38 @@
+.sliderContainer {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 16px;
+  position: sticky;
+  top: 77px;
+  background: linear-gradient(to bottom, #FFFCEB, transparent);
+  z-index: 20;
+}
+
+.sliderContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.catBtn {
+  padding: 10px 20px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(30, 51, 34, 0.1);
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  color: #1E3322;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.activeCat {
+  background-color: #1E3322;
+  color: #FFFCEB;
+  border-color: #1E3322;
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px -3px rgba(30, 51, 34, 0.2);
+}
