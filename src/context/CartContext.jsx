@@ -1,15 +1,14 @@
 import React, { createContext, useContext, useReducer } from 'react';
 
-// 1. Initial State
 const initialState = {
   cart: []
 };
 
-// 2. Reducer ֆունկցիան
 function cartReducer(state, action) {
   switch (action.type) {
     case 'ADD_TO_CART': {
       const existingItem = state.cart.find(item => item.id === action.payload.id);
+      
       if (existingItem) {
         return {
           ...state,
@@ -37,10 +36,8 @@ function cartReducer(state, action) {
   }
 }
 
-// 3. Ստեղծում ենք React Context-ը
 const CartContext = createContext();
 
-// 4. Ստեղծում ենք Provider կոմպոնենտը
 export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
@@ -51,7 +48,6 @@ export function CartProvider({ children }) {
   );
 }
 
-// 5. Custom hook՝ կոմպոնենտների մեջ հեշտ օգտագործելու համար
 export function useCart() {
   const context = useContext(CartContext);
   if (!context) {

@@ -98,9 +98,8 @@ export const menuItems = [
   { id: 'f8', category: 'FRIES_MORE', price: 800, must_try: false, name: { am: 'Մանանեխի Մայոնեզ', en: 'Mustard Mayo' } }
 ];
 
-// Հավելյալ ռեստորանային ինֆորմացիա (եթե Header-ում կամ Հաշվում պետք գա)
 export const restaurantConfig = {
   currency: '֏',
-  serviceCharge: 0.10, // 10%
+  serviceCharge: 0.10, 
   pastaNote: 'Ընտրեք ձեր տնական պաստան (Տալյատելե կամ Սպագետի)'
 };
