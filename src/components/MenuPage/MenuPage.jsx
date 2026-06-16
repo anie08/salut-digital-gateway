@@ -8,17 +8,17 @@ import './MenuPage.css';
 
 export default function MenuPage() {
   const [showTableSelect, setShowTableSelect] = useState(() => {
-    return localStorage.getItem('tableNumber') ? false : true;
+    return sessionStorage.getItem('tableNumber') ? false : true;
   });
   
-  const [tableNumber, setTableNumber] = useState(() => localStorage.getItem('tableNumber'));
+  const [tableNumber, setTableNumber] = useState(() => sessionStorage.getItem('tableNumber'));
   const [lang, setLang] = useState('am');
   const [selectedCategory, setSelectedCategory] = useState('BREAKFAST');
   const [selectedSubCategory, setSelectedSubCategory] = useState('ALL');
   const { cart } = useCart();
 
   const handleTableSelect = (num) => {
-    localStorage.setItem('tableNumber', num); 
+    sessionStorage.setItem('tableNumber', num); 
     setTableNumber(num);
     setShowTableSelect(false);
   };
