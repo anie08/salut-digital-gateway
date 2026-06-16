@@ -1,58 +1,51 @@
 .header {
-  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(30, 51, 34, 0.1);
+  padding: 5px 25px;
+
   position: sticky;
   top: 0;
-  background-color: rgba(255, 252, 235, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  z-index: 30;
+  z-index: 100;
+
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .title {
-  font-family: serif;
-  font-size: 1.5rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #1E3322;
+  font-size: 40px;
+  font-weight: 900;
+
+  background: linear-gradient(135deg, #D4AF37, #F2D27A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(30, 51, 34, 0.6);
-  margin-top: -4px;
-}
-
-.langSelector {
-  display: flex;
-  gap: 4px;
-  background-color: rgba(30, 51, 34, 0.05);
-  padding: 4px;
-  border-radius: 9999px;
-  border: 1px solid rgba(30, 51, 34, 0.1);
+  color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  letter-spacing: 2px;
 }
 
 .langBtn {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 9999px;
-  text-transform: uppercase;
-  background: none;
+  padding: 8px 14px;
+  border-radius: 999px;
   border: none;
-  color: rgba(30, 51, 34, 0.7);
   cursor: pointer;
-  transition: all 0.3s;
+
+  background: rgba(255,255,255,0.08);
+  color: white;
+
+  transition: 0.3s;
+}
+
+.langBtn:hover {
+  transform: translateY(-2px) scale(1.05);
 }
 
 .activeLang {
-  background-color: #1E3322;
-  color: #FFFCEB;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #D4AF37, #F2D27A);
+  color: black;
 }

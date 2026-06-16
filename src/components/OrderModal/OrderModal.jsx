@@ -1,56 +1,61 @@
-import React from 'react';
-import styles from './OrderModal.css';
+import React, { useState } from 'react';
+import './OrderModal.css';
 
-export default function OrderModal({ 
-  orderType, setOrderType, tableNumber, setTableNumber, 
-  phoneNumber, setPhoneNumber, setIsModalOpen, sendOrderToTelegram 
+export default function OrderModal({
+  setTableNumber,
+  setOrderConfirmed
 }) {
+  const [selectedTable, setSelectedTable] = useState(null);
+
+  const tables = Array.from({ length: 12 }, (_, i) => i + 1);
+
+  const confirmTable = () => {
+    if (!selectedTable) return;
+
+    setTableNumber(selectedTable);
+    setOrderConfirmed(true);
+  };
+
   return (
-    <div className={styles.backdrop}>
-      <div className={styles.sheet}>
-        <div className={styles.handle} />
-        <h2 className={styles.modalTitle}>Պատվերի Տեսակը</h2>
-        
-        <div className={styles.typeGrid}>
-          {[
-            { id: 'dine_in', label: 'Տեղում' },
-            { id: 'delivery', label: 'Առաքում' },
-            { id: 'takeaway', label: 'Տանելու' }
-          ].map((t) => (
+    <div className="backdrop">
+      <div className="sheet">
+
+        <div className="handle" />
+
+        <h2 className="title">Choose Your Table</h2>
+        <p className="subtitle">Please select where you are seated</p>
+
+        <div className="tableGrid">
+          {tables.map(t => (
             <button
-              key={t.id}
-              onClick={() => setOrderType(t.id)}
-              className={`${styles.typeBtn} ${orderType === t.id ? styles.activeType : ''}`}
+              key={t}
+              onClick={() => setSelectedTable(t)}
+              className={`tableBtn ${
+                selectedTable === t ? 'activeTable' : ''
+              }`}
             >
-              {t.label}
+              {t}
             </button>
           ))}
         </div>
 
-        {orderType === 'dine_in' && (
-          <div className={styles.inputGroup}>
-            <label className={styles.label}>Սեղանի Համարը`</label>
-            <input type="number" placeholder="օրինակ՝ 4" value={tableNumber} onChange={(e) => setTableNumber(e.target.value)} className={styles.input} />
-          </div>
-        )}
-
-        {(orderType === 'delivery' || orderType === 'takeaway') && (
-          <div className={styles.inputGroup}>
-            <label className={styles.label}>Հեռախոսահամար`</label>
-            <input type="tel" placeholder="+374 __ ___ ___" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className={styles.input} />
-          </div>
-        )}
-
-        <div className={styles.actions}>
-          <button onClick={() => setIsModalOpen(false)} className={styles.cancelBtn}>Փակել</button>
-          <button 
-            onClick={sendOrderToTelegram} 
-            disabled={!orderType || (orderType === 'dine_in' && !tableNumber)} 
-            className={styles.submitBtn}
+        <div className="actions">
+          <button
+            onClick={() => setOrderConfirmed(true)}
+            className="cancelBtn"
           >
-            Ուղարկել
+            Cancel
+          </button>
+
+          <button
+            onClick={confirmTable}
+            disabled={!selectedTable}
+            className="submitBtn"
+          >
+            Enter Menu
           </button>
         </div>
+
       </div>
     </div>
   );

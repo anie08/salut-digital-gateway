@@ -1,163 +1,125 @@
 .backdrop {
   position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  z-index: 50;
-}
-
-@media (min-width: 640px) {
-  .backdrop {
-    align-items: center;
-    padding: 16px;
-  }
+  z-index: 1000;
 }
 
 .sheet {
-  background-color: #FFFCEB;
+  background: #ffffff;
   width: 100%;
-  padding: 24px;
+  max-width: 480px;
   border-radius: 24px 24px 0 0;
-  box-shadow: 0 -20px 25px -5px rgba(0, 0, 0, 0.2);
-  border-top: 1px solid rgba(30, 51, 34, 0.1);
-  max-height: 90vh;
-  overflow-y: auto;
+  padding: 16px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: slideUp 0.3s ease-out;
 }
 
-@media (min-width: 640px) {
-  .sheet {
-    max-width: 448px;
-    border-radius: 16px;
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
 
 .handle {
-  width: 48px;
-  height: 4px;
-  background-color: rgba(30, 51, 34, 0.2);
-  border-radius: 9999px;
-  margin: 0 auto 16px auto;
-}
-
-@media (min-width: 640px) {
-  .handle { display: none; }
-}
-
-.modalTitle {
-  font-family: serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  width: 40px;
+  height: 5px;
+  background: #d1d1d1;
+  border-radius: 3px;
   margin-bottom: 16px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #1E3322;
 }
 
-.typeGrid {
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #888;
+  margin: 4px 0 20px;
+}
+
+.tableGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.typeBtn {
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(30, 51, 34, 0.2);
-  background-color: rgba(255, 255, 255, 0.4);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  color: #1E3322;
-  transition: all 0.2s;
-}
-
-.activeType {
-  border-color: #1E3322;
-  background-color: #1E3322;
-  color: #FFFCEB;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.inputGroup {
-  margin-bottom: 16px;
-  animation: fadeIn 0.3s ease-out;
-}
-
-.label {
-  display: block;
-  font-size: 10px;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  margin-bottom: 6px;
-  opacity: 0.6;
-}
-
-.input {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
   width: 100%;
-  padding: 14px;
-  background-color: #ffffff;
-  border: 1px solid rgba(30, 51, 34, 0.2);
-  border-radius: 12px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-  outline: none;
-  box-sizing: border-box;
+  margin-bottom: 24px;
 }
 
-.input:focus {
-  border-color: #1E3322;
+.tableBtn {
+  aspect-ratio: 1 / 1;
+  border: 1px solid #e0e0e0;
+  background: #f7f7f7;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tableBtn:hover {
+  background: #efefef;
+}
+
+.activeTable {
+  background: #1a1a1a;
+  color: #ffffff;
+  border-color: #1a1a1a;
 }
 
 .actions {
   display: flex;
   gap: 12px;
-  margin-top: 24px;
+  width: 100%;
 }
 
-.cancelBtn {
-  flex: 1;
-  padding: 14px;
-  border: 1px solid rgba(30, 51, 34, 0.2);
-  background: none;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: rgba(30, 51, 34, 0.6);
-  cursor: pointer;
-}
-
+.cancelBtn,
 .submitBtn {
   flex: 1;
   padding: 14px;
-  background-color: #1E3322;
-  color: #FFFCEB;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
   border: none;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(30, 51, 34, 0.1);
+  transition: opacity 0.2s ease;
+}
+
+.cancelBtn {
+  background: #f0f0f0;
+  color: #444;
+}
+
+.cancelBtn:hover {
+  background: #e4e4e4;
+}
+
+.submitBtn {
+  background: #1a1a1a;
+  color: #ffffff;
 }
 
 .submitBtn:disabled {
-  opacity: 0.3;
+  background: #cfcfcf;
   cursor: not-allowed;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+.submitBtn:not(:disabled):hover {
+  opacity: 0.85;
 }

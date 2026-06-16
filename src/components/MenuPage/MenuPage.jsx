@@ -1,31 +1,59 @@
-// src/components/MenuPage/MenuPage.jsx
-
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import CategorySlider from '../CategorySlider/CategorySlider';
 import MenuGrid from '../MenuGrid/MenuGrid';
 import FloatingCart from '../FloatingCart/FloatingCart';
 import { useCart } from '../../context/CartContext';
-import styles from './MenuPage.module.css'; 
+import './MenuPage.css';
 
 export default function MenuPage() {
-  const { type, tableNumber } = useParams();
+  const [showTableSelect, setShowTableSelect] = useState(() => {
+    return localStorage.getItem('tableNumber') ? false : true;
+  });
   
+  const [tableNumber, setTableNumber] = useState(() => localStorage.getItem('tableNumber'));
+  const [lang, setLang] = useState('am');
   const [selectedCategory, setSelectedCategory] = useState('BREAKFAST');
+  const [selectedSubCategory, setSelectedSubCategory] = useState('ALL');
   const { cart } = useCart();
-  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+
+  const handleTableSelect = (num) => {
+    localStorage.setItem('tableNumber', num); 
+    setTableNumber(num);
+    setShowTableSelect(false);
+  };
 
   return (
-    <div className={styles.pageContainer}>
-      <Header />
-      
-      <CategorySlider selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-
-      <MenuGrid selectedCategory={selectedCategory} />
-
-      {totalItems > 0 && (
-        <FloatingCart cart={cart} />
+    <div className="pageContainer">
+      {showTableSelect ? (
+        <div className="tableOverlay">
+          <div className="tableModal">
+            <h2>Ընտրեք սեղանը</h2>
+            <div className="tableGrid">
+              {[...Array(12)].map((_, i) => (
+                <button key={i} onClick={() => handleTableSelect(i + 1)} className="tableBtn">
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <>
+          <Header lang={lang} setLang={setLang} tableNumber={tableNumber} />
+          <CategorySlider 
+            selectedCategory={selectedCategory} 
+            setSelectedCategory={(cat) => { setSelectedCategory(cat); setSelectedSubCategory('ALL'); }}
+            selectedSubCategory={selectedSubCategory}
+            setSelectedSubCategory={setSelectedSubCategory}
+          />
+          <MenuGrid 
+            selectedCategory={selectedCategory} 
+            selectedSubCategory={selectedSubCategory} 
+            lang={lang} 
+          />
+          {cart && cart.length > 0 && <FloatingCart cart={cart} />}
+        </>
       )}
     </div>
   );

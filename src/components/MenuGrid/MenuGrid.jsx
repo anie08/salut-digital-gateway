@@ -1,57 +1,49 @@
 import React from 'react';
-import styles from './MenuGrid.module.css';
-import { menuItems } from '../../data/menudata'; 
-import { useCart } from '../../context/CartContext'; 
+import { Link } from 'react-router-dom';
+import './MenuGrid.css';
+import { menuItems } from '../../data/menudata';
+import { useCart } from '../../context/CartContext';
 
-export default function MenuGrid({ selectedCategory }) {
+export default function MenuGrid({ selectedCategory, selectedSubCategory, lang }) {
   const { cart, dispatch } = useCart();
 
-  const filteredItems = menuItems.filter(item => item.category === selectedCategory);
+  const items = menuItems.filter(item => {
+    const catMatch = item.category === selectedCategory;
+    const subMatch = selectedSubCategory === 'ALL' ? true : item.subcategory === selectedSubCategory;
+    return catMatch && subMatch;
+  });
 
   return (
-    <div className={styles.grid}>
-      {filteredItems.map((item) => {
-        const cartItem = cart.find(i => i.id === item.id);
-
+    <div className="grid">
+      {items.map(item => {
+        const inCart = cart.find(i => i.id === item.id);
+        
         return (
-          <div key={item.id} className={styles.card}>
-            <div className={styles.imgWrapper}>
-              {item.image && <img src={item.image} alt={item.name?.am} className={styles.image} />}
-              <div className={styles.overlay} />
-            </div>
-            <div className={styles.info}>
-              <h3 className={styles.title}>{item.name?.am}</h3>
-              <div className={styles.actions}>
-                <span className={styles.price}>{item.price.toLocaleString()} ֏</span>
+          <Link to={`/item/${item.id}`} className="card" key={item.id}>
+            <div className="cardInner">
+              <div className="imgWrapper">
+                {item.image && <img src={item.image} className="image" alt="" />}
+              </div>
+              <div className="info">
+                <h3>{item.name[lang] || item.name['am']}</h3>
+                <p className="price">{item.price} ֏</p>
                 
-                {cartItem ? (
-                  <div className={styles.counter}>
-                    <button 
-                      onClick={() => dispatch({ type: 'REMOVE_ONE', payload: item.id })} 
-                      className={styles.countBtn}
-                    >
-                      -
+                <div className="actions" onClick={(e) => e.preventDefault()}>
+                  {inCart ? (
+                    <div className="counter">
+                      <button onClick={() => dispatch({type:'REMOVE_ONE', payload:item.id})}>-</button>
+                      <span>{inCart.qty}</span>
+                      <button onClick={() => dispatch({type:'ADD_TO_CART', payload:item})}>+</button>
+                    </div>
+                  ) : (
+                    <button className="addBtn" onClick={() => dispatch({type:'ADD_TO_CART', payload:item})}>
+                      + Add
                     </button>
-                    <span className={styles.qty}>{cartItem.qty}</span>
-                    <button 
-                      onClick={() => dispatch({ type: 'ADD_TO_CART', payload: item })} 
-                      className={styles.countBtn}
-                    >
-                      +
-                    </button>
-                  </div>
-                ) : (
-                  // Եթե զամբյուղում չէ՝ ցուցադրում ենք «Ավելացնել» կոճակը
-                  <button 
-                    onClick={() => dispatch({ type: 'ADD_TO_CART', payload: item })} 
-                    className={styles.addBtn}
-                  >
-                    + Add
-                  </button>
-                )}
+                  )}
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         );
       })}
     </div>

@@ -1,21 +1,22 @@
 import React from 'react';
-import styles from './Header.css';
+import './Header.css';
 
 export default function Header({ lang, setLang }) {
   return (
-    <header className={styles.header}>
+    <header className="header">
       <div>
-        <h1 className={styles.title}>Salut</h1>
-        <p className={styles.subtitle}>Digital Menu</p>
+        <h1 className="title">Salut</h1>
+        <p className="subtitle">Digital Menu</p>
       </div>
-      <div className={styles.langSelector}>
-        {['am', 'en', 'ru'].map((l) => (
+
+      <div className="langSelector">
+        {['am','en','ru'].map(l => (
           <button
             key={l}
             onClick={() => setLang(l)}
-            className={`${styles.langBtn} ${lang === l ? styles.activeLang : ''}`}
+            className={`langBtn ${lang === l ? 'activeLang' : ''}`}
           >
-            {l}
+            {l.toUpperCase()}
           </button>
         ))}
       </div>
