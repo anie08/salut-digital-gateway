@@ -1,5 +1,4 @@
-import { useCart } from '../../context/CartContext'; // Օգտագործում ենք քո կոնտեքստը
-// FloatingCart.js
+import { useCart } from '../../context/CartContext';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './FloatingCart.css';
@@ -21,31 +20,4 @@ export default function FloatingCart() {
     <div className="cartToastContainer">
       <div className="orderTypeSelector">
         <button 
-          className={`typeBtn ${orderType === 'dineIn' ? 'active' : ''}`}
-          onClick={() => dispatch({ type: 'SET_ORDER_TYPE', payload: 'dineIn' })}
-        >
-          Տեղում (10%)
-        </button>
-        <button 
-          className={`typeBtn ${orderType === 'delivery' ? 'active' : ''}`}
-          onClick={() => dispatch({ type: 'SET_ORDER_TYPE', payload: 'delivery' })}
-        >
-          Առաքում (+600 ֏)
-        </button>
-      </div>
-
-      <div className="cartToast">
-        <div className="leftSection">
-          <div className="badge">{totalItems}</div>
-          <div>
-            <p className="label">Ընդհանուր</p>
-            <p className="totalPrice">{finalPrice.toLocaleString()} ֏</p>
-          </div>
-        </div>
-        <button onClick={() => navigate('/checkout')} className="orderBtn">
-          Պատվիրել
-        </button>
-      </div>
-    </div>
-  );
-}
+          className={`typeBtn ${orderType === 'dine
