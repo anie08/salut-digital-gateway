@@ -1,6 +1,6 @@
 import React from 'react';
 import './CategorySlider.css';
-import { menuCategories } from '../../data/menudata';
+import { menuItems } from '../../data/menudata';
 
 export default function CategorySlider({ 
   selectedCategory, 
@@ -8,12 +8,12 @@ export default function CategorySlider({
   selectedSubCategory, 
   setSelectedSubCategory 
 }) {
-  const activeCat = menuCategories.find(c => c.id === selectedCategory);
+  const activeCat = menuItems.find(c => c.id === selectedCategory);
 
   return (
     <div className="sliderContainer">
       <div className="mainCats">
-        {menuCategories.map(cat => (
+        {menuItems.map(cat => (
           <button 
             key={cat.id} 
             onClick={() => setSelectedCategory(cat.id)}
