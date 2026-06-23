@@ -1,7 +1,4 @@
-// CartContext.js
-import React, { createContext, useContext, useReducer } from 'react';
 
-// 1. Վերցնում ենք նախկինում պահպանված զամբյուղն ու պատվերի տեսակը, եթե կան
 const savedCart = localStorage.getItem('salut_cart');
 const savedOrderType = localStorage.getItem('salut_order_type');
 
@@ -24,7 +21,7 @@ function cartReducer(state, action) {
         updatedCart = [...state.cart, { ...action.payload, qty: 1 }];
       }
 
-      // Պահում ենք բրաուզերի հիշողության մեջ
+      
       localStorage.setItem('salut_cart', JSON.stringify(updatedCart));
       return { ...state, cart: updatedCart };
     }
