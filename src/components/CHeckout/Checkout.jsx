@@ -8,7 +8,7 @@ export default function Checkout() {
   const { cart, orderType, dispatch } = useCart();
   const navigate = useNavigate();
 
-  // Հաշվարկներ
+
   const itemsPrice = cart ? cart.reduce((sum, item) => sum + (item.price * item.qty || 0), 0) : 0;
   const serviceFee = orderType === 'dineIn' ? itemsPrice * 0.10 : 0;
   const deliveryFee = orderType === 'delivery' ? 600 : 0;
@@ -30,7 +30,7 @@ export default function Checkout() {
         <h1>Ձեր Չեկը</h1>
       </div>
 
-      {/* Պատվիրված ապրանքների ցուցակը կառավարման կոճակներով */}
+      
       <div className="receiptItems">
         {cart.map((item) => (
           <div key={item.id} className="receiptItem">
@@ -40,7 +40,7 @@ export default function Checkout() {
               </span>
             </div>
             
-            {/* Քանակի փոփոխման հատվածը չեկի ներսում */}
+            
             <div className="receiptActions">
               <div className="checkoutCounter">
                 <button 
@@ -65,7 +65,7 @@ export default function Checkout() {
 
       <hr className="receiptDivider" />
 
-      {/* Մանրամասն հաշվարկ */}
+      
       <div className="receiptDetails">
         <div className="receiptRow">
           <span>Ապրանքներ՝</span>
@@ -94,7 +94,7 @@ export default function Checkout() {
         </div>
       </div>
 
-      {/* Վերջնական հաստատման կոդը */}
+      
       <button 
         onClick={() => {
           alert('Պատվերը հաջողությամբ ուղարկվեց Salut!');
