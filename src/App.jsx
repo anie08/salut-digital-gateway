@@ -6,8 +6,9 @@ import SplashScreen from "./components/SplashScreen/SplashScreen";
 import MenuPage from "./components/MenuPage/MenuPage";
 import BackgroundVideo from "./components/BackgroundVideo/BackgroundVideo";
 import ItemDetailPage from "./components/ItemDetailPage/ItemDetailPage";
-import Checkout from "./components/CHeckout/Checkout"; // Ներմուծում ենք քո ստեղծած Checkout ֆայլը
+import Checkout from "./components/CHeckout/Checkout"; 
 import "./App.css";
+
 function SelectionPage() {
   const { dispatch } = useCart();
 
@@ -47,7 +48,6 @@ export default function App() {
   return (
     <CartProvider>
       <Router>
-        {/* Ստեղծում ենք ընդհանուր wrapper, որ flex-ով ֆուտերը միշտ կպած մնա ներքևին */}
         <div className="appWrapper">
           {show && <SplashScreen />}
           <BackgroundVideo />
@@ -59,13 +59,11 @@ export default function App() {
               <Route path="/menu/:type" element={<MenuPage />} />
               <Route path="/item/:id" element={<ItemDetailPage />} />
               
-              {/* Երկու երթուղիներն էլ հիմա աշխատեցնում են քո առանձին Checkout բաղադրիչը */}
               <Route path="/cart" element={<Checkout />} />
               <Route path="/checkout" element={<Checkout />} />
             </Routes>
           </main>
 
-          {/* Ֆուտերը տեղադրված է այնպես, որ երևա բոլոր էջերում սպլեշից հետո */}
           {!show && <Footer />}
         </div>
       </Router>
