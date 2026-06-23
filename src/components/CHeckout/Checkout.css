@@ -1,18 +1,14 @@
-/* --- Չեկի Գլխավոր Էջը --- */
 .checkoutPage {
   max-width: 480px;
   margin: 40px auto;
   padding: 30px 24px;
-  /* Կարագագույն/կրեմագույն նրբահամ երանգ */
   background: #fbf9f1; 
-  /* Մուգ կանաչ տեքստեր */
   color: #1A3020; 
   border-radius: 24px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* --- Գլխամաս (Header) --- */
 .checkoutHeader {
   display: flex;
   align-items: center;
@@ -41,7 +37,6 @@
   transform: translateX(-3px);
 }
 
-/* --- Ապրանքների Ցուցակը --- */
 .receiptItems {
   display: flex;
   flex-direction: column;
@@ -64,7 +59,6 @@
   font-size: 16px;
 }
 
-/* --- Քանակի Կառավարման Կոճակները (+ / -) --- */
 .receiptActions {
   display: flex;
   align-items: center;
@@ -74,7 +68,6 @@
 .checkoutCounter {
   display: flex;
   align-items: center;
-  /* Ավելի բաց կարագագույն կոճակների ֆոնի համար */
   background: #f3efe0; 
   border-radius: 20px;
   padding: 4px 10px;
@@ -96,7 +89,7 @@
 }
 
 .counterBtn:hover {
-  color: #2c5e3b; /* Մի փոքր ավելի բաց կանաչ սեղմելիս */
+  color: #2c5e3b; 
 }
 
 .checkoutQty {
@@ -113,14 +106,12 @@
   text-align: right;
 }
 
-/* --- Կտրոնի Գիծը (Dotted Divider) --- */
 .receiptDivider {
   border: none;
   border-top: 2px dashed #d5ceb8;
   margin: 22px 0;
 }
 
-/* --- Հաշվարկի Մանրամասները --- */
 .receiptDetails {
   display: flex;
   flex-direction: column;
@@ -134,7 +125,7 @@
 }
 
 .feeRow {
-  color: #4A5E4E; /* Մեղմ կանաչավուն երանգ երկրորդական տեքստերի համար */
+  color: #4A5E4E; 
 }
 
 .totalRow {
@@ -143,11 +134,10 @@
   color: #1A3020;
 }
 
-/* --- Հաստատման Մեծ Կոճակը (Deep Green) --- */
 .confirmOrderBtn {
   width: 100%;
-  background: #1A3020; /* Մուգ կանաչ */
-  color: #fbf9f1; /* Կարագագույն տեքստ */
+  background: #1A3020; 
+  color: #fbf9f1; 
   border: none;
   padding: 16px;
   font-size: 16px;
@@ -160,14 +150,13 @@
 }
 
 .confirmOrderBtn:hover {
-  background: #122216; /* Էլ ավելի մուգ կանաչ hover-ի ժամանակ */
+  background: #122216; 
 }
 
 .confirmOrderBtn:active {
   transform: scale(0.98);
 }
 
-/* --- Դատարկ Զամբյուղի Վիճակը --- */
 .emptyCheckout {
   text-align: center;
   padding: 40px 20px;
