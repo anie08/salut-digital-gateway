@@ -1,0 +1,196 @@
+/* --- Չեկի Գլխավոր Էջը --- */
+.checkoutPage {
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 30px 24px;
+  /* Կարագագույն/կրեմագույն նրբահամ երանգ */
+  background: #fbf9f1; 
+  /* Մուգ կանաչ տեքստեր */
+  color: #1A3020; 
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* --- Գլխամաս (Header) --- */
+.checkoutHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.checkoutHeader h1 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 700;
+  color: #1A3020;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #1A3020;
+  padding: 4px 8px;
+  transition: transform 0.2s;
+}
+
+.backBtn:hover {
+  transform: translateX(-3px);
+}
+
+/* --- Ապրանքների Ցուցակը --- */
+.receiptItems {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.receiptItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.itemInfo {
+  flex: 1;
+}
+
+.itemName {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* --- Քանակի Կառավարման Կոճակները (+ / -) --- */
+.receiptActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.checkoutCounter {
+  display: flex;
+  align-items: center;
+  /* Ավելի բաց կարագագույն կոճակների ֆոնի համար */
+  background: #f3efe0; 
+  border-radius: 20px;
+  padding: 4px 10px;
+  gap: 12px;
+}
+
+.counterBtn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #1A3020;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.counterBtn:hover {
+  color: #2c5e3b; /* Մի փոքր ավելի բաց կանաչ սեղմելիս */
+}
+
+.checkoutQty {
+  font-size: 15px;
+  font-weight: 600;
+  min-width: 14px;
+  text-align: center;
+}
+
+.itemPrice {
+  font-weight: 600;
+  font-size: 16px;
+  min-width: 75px;
+  text-align: right;
+}
+
+/* --- Կտրոնի Գիծը (Dotted Divider) --- */
+.receiptDivider {
+  border: none;
+  border-top: 2px dashed #d5ceb8;
+  margin: 22px 0;
+}
+
+/* --- Հաշվարկի Մանրամասները --- */
+.receiptDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 15px;
+}
+
+.receiptRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.feeRow {
+  color: #4A5E4E; /* Մեղմ կանաչավուն երանգ երկրորդական տեքստերի համար */
+}
+
+.totalRow {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1A3020;
+}
+
+/* --- Հաստատման Մեծ Կոճակը (Deep Green) --- */
+.confirmOrderBtn {
+  width: 100%;
+  background: #1A3020; /* Մուգ կանաչ */
+  color: #fbf9f1; /* Կարագագույն տեքստ */
+  border: none;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 14px;
+  margin-top: 28px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.confirmOrderBtn:hover {
+  background: #122216; /* Էլ ավելի մուգ կանաչ hover-ի ժամանակ */
+}
+
+.confirmOrderBtn:active {
+  transform: scale(0.98);
+}
+
+/* --- Դատարկ Զամբյուղի Վիճակը --- */
+.emptyCheckout {
+  text-align: center;
+  padding: 40px 20px;
+  color: #fbf9f1;
+}
+
+.emptyCheckout h2 {
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.backMenuBtn {
+  background: #fbf9f1;
+  color: #1A3020;
+  border: none;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.backMenuBtn:hover {
+  opacity: 0.9;
+}

@@ -1,35 +1,52 @@
+// CartContext.js
 import React, { createContext, useContext, useReducer } from 'react';
 
+// 1. Վերցնում ենք նախկինում պահպանված զամբյուղն ու պատվերի տեսակը, եթե կան
+const savedCart = localStorage.getItem('salut_cart');
+const savedOrderType = localStorage.getItem('salut_order_type');
+
 const initialState = {
-  cart: []
+  cart: savedCart ? JSON.parse(savedCart) : [],
+  orderType: savedOrderType ? savedOrderType : 'dineIn'
 };
 
 function cartReducer(state, action) {
   switch (action.type) {
     case 'ADD_TO_CART': {
       const existingItem = state.cart.find(item => item.id === action.payload.id);
+      let updatedCart;
       
       if (existingItem) {
-        return {
-          ...state,
-          cart: state.cart.map(item =>
-            item.id === action.payload.id ? { ...item, qty: item.qty + 1 } : item
-          )
-        };
+        updatedCart = state.cart.map(item =>
+          item.id === action.payload.id ? { ...item, qty: item.qty + 1 } : item
+        );
+      } else {
+        updatedCart = [...state.cart, { ...action.payload, qty: 1 }];
       }
-      return { ...state, cart: [...state.cart, { ...action.payload, qty: 1 }] };
+
+      // Պահում ենք բրաուզերի հիշողության մեջ
+      localStorage.setItem('salut_cart', JSON.stringify(updatedCart));
+      return { ...state, cart: updatedCart };
     }
     
-    case 'REMOVE_ONE':
-      return {
-        ...state,
-        cart: state.cart.map(item =>
-          item.id === action.payload ? { ...item, qty: item.qty - 1 } : item
-        ).filter(item => item.qty > 0)
-      };
+    case 'REMOVE_ONE': {
+      const updatedCart = state.cart.map(item =>
+        item.id === action.payload ? { ...item, qty: item.qty - 1 } : item
+      ).filter(item => item.qty > 0);
 
-    case 'CLEAR_CART':
-      return { ...state, cart: [] };
+      localStorage.setItem('salut_cart', JSON.stringify(updatedCart));
+      return { ...state, cart: updatedCart };
+    }
+
+    case 'SET_ORDER_TYPE': {
+      localStorage.setItem('salut_order_type', action.payload);
+      return { ...state, orderType: action.payload };
+    }
+
+    case 'CLEAR_CART': {
+      localStorage.removeItem('salut_cart');
+      return { ...state, cart: [], orderType: 'dineIn' };
+    }
 
     default:
       return state;
@@ -42,7 +59,7 @@ export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
   return (
-    <CartContext.Provider value={{ cart: state.cart, dispatch }}>
+    <CartContext.Provider value={{ cart: state.cart, orderType: state.orderType, dispatch }}>
       {children}
     </CartContext.Provider>
   );

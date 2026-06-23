@@ -78,3 +78,12 @@ html, body, #root {
   text-decoration: underline;
   font-size: 15px;
 }
+.appWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.mainContent {
+  flex: 1; 
+}
